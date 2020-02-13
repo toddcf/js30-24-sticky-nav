@@ -1,1 +1,1 @@
-# js30-24-sticky-nav
+# JavaScript30 #24: Sticky Nav
