@@ -66,11 +66,14 @@
     if(window.scrollY >= topOfNav) {
       // ...fix the nav's position:
       document.body.classList.add('fixed-nav');
+      // ...compensate for the reflow that will occur when the nav is changed to fixed position:
+      document.body.style.paddingTop = nav.offsetHeight + 'px';
     }
     else {
       // Otherwise, un-fix the nav's position:
       document.body.classList.remove('fixed-nav');
-      // RESUME 3:54
+      // ... and un-pad the top of the body:
+      document.body.style.paddingTop = 0;
     }
   }
 
