@@ -57,31 +57,27 @@
 
   const nav = document.querySelector('#main');
 
-  const stickyNav = {
-    // When page loads, grab position of top of navbar:
-    topOfNav: nav.offsetTop,
-    // Run every time page scrolls:
-    fixNav: () => {
-      // When scrollY reaches the position of the top of the nav...
-      if(window.scrollY >= stickyNav.topOfNav) {
-        // ...fix the nav's position:
-        document.body.classList.add('fixed-nav');
-        // ...compensate for the reflow that will occur when the nav is changed to fixed position:
-        document.body.style.paddingTop = nav.offsetHeight + 'px';
-      }
-      else {
-        // Otherwise, un-fix the nav's position:
-        document.body.classList.remove('fixed-nav');
-        // ... and un-pad the top of the body:
-        document.body.style.paddingTop = 0;
-      }
-    },
-    init: () => {
-      window.addEventListener('scroll', stickyNav.fixNav);
+  // When page loads, grab position of top of navbar:
+  const topOfNav = nav.offsetTop;
+
+  // Run every time page scrolls:
+  function fixNav() {
+    // When scrollY reaches the position of the top of the nav...
+    if(window.scrollY >= topOfNav) {
+      // ...fix the nav's position:
+      document.body.classList.add('fixed-nav');
+      // ...compensate for the reflow that will occur when the nav is changed to fixed position:
+      document.body.style.paddingTop = nav.offsetHeight + 'px';
+    }
+    else {
+      // Otherwise, un-fix the nav's position:
+      document.body.classList.remove('fixed-nav');
+      // ... and un-pad the top of the body:
+      document.body.style.paddingTop = 0;
     }
   }
 
-  stickyNav.init();
+  window.addEventListener('scroll', fixNav);
 
 </script>
 
